@@ -1,6 +1,6 @@
-# marshmallow
+# Marshmallow
 
-> DevMeetup
+Meetups for developers
 
 ## Build Setup
 
