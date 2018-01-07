@@ -17,7 +17,8 @@
         <v-carousel>
           <v-carousel-item
             v-for="(meet) in meetups"
-            :src="meet.src" :key="meet.id">
+            :src="meet.src" :key="meet.id"
+            @click="onLoadMeetup(meet.id)">
             <div class="title">
               {{ meet.title }}
             </div>
@@ -38,9 +39,14 @@
     data () {
       return {
         meetups: [
-          { src: 'http://ukamenterprises.com/wp-content/uploads/2015/07/Ni7326971.jpg', id: '01', title: 'Kyiv' },
-          { src: 'http://www.smileacadimos.gr/Images/Products/Netherlands-Amsterdam_413054785-20170921-114451.jpg', id: '02', title: 'Amsterdam' }
+          { src: 'http://www.smileacadimos.gr/Images/Products/Netherlands-Amsterdam_413054785-20170921-114451.jpg', id: '1', title: 'Amsterdam' },
+          { src: 'http://ukamenterprises.com/wp-content/uploads/2015/07/Ni7326971.jpg', id: '2', title: 'Kyiv' }
         ]
+      }
+    },
+    methods: {
+      onLoadMeetup (id) {
+        this.$router.push('/meetups/' + id)
       }
     }
   }
