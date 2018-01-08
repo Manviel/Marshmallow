@@ -100,7 +100,7 @@ export default {
         return
       }
       const meetData = {
-        title: this.location,
+        title: this.title,
         location: this.location,
         src: this.src,
         description: this.description,

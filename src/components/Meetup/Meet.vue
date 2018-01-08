@@ -11,7 +11,7 @@
             height="400px">
           </v-card-media>
           <v-card-text>
-            <div>{{ meet.date }} - {{ meet.location }}</div>
+            <div>{{ meet.date | date }} - {{ meet.location }}</div>
             <div>{{ meet.description }}</div>
           </v-card-text>
           <v-card-actions>
