@@ -11,8 +11,8 @@
             height="400px">
           </v-card-media>
           <v-card-text>
-            <div>{{ meet.date }}</div>
-            <div>A full-day, two-track conference on all things React, gathering Front-end and Full-stack developers across the globe in the tech heart of Europe. Mark your calendars for the biggest React community event.</div>
+            <div>{{ meet.date }} - {{ meet.location }}</div>
+            <div>{{ meet.description }}</div>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>

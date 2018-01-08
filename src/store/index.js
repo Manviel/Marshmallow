@@ -9,14 +9,18 @@ export const store = new Vuex.Store({
       {
         src: 'https://cdn-images-1.medium.com/max/1600/1*rZlNowT1EIcDay1uV8nzQw.jpeg',
         id: '1',
-        title: 'Amsterdam',
-        date: '2018-04-13'
+        title: 'React Amsterdam',
+        date: '2018-04-13',
+        location: 'Amsterdam',
+        description: 'Come in'
       },
       {
         src: 'http://ukamenterprises.com/wp-content/uploads/2015/07/Ni7326971.jpg',
         id: '2',
-        title: 'Kyiv',
-        date: '2018-03-18'
+        title: 'FwDays',
+        date: '2018-03-18',
+        location: 'Kyiv',
+        description: 'Join us'
       }
     ],
     user: {
@@ -36,7 +40,8 @@ export const store = new Vuex.Store({
         location: payload.location,
         src: payload.src,
         description: payload.description,
-        id: '101'
+        id: '101',
+        date: payload.date
       }
       commit('createMeetup', meetup)
     }

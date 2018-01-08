@@ -51,6 +51,16 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
+              <h3>Choose a Date</h3>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+              <v-date-picker v-model="date"></v-date-picker>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
               <v-btn
                 class="red" dark
                 :disabled="!formIsValid"
@@ -72,7 +82,8 @@ export default {
       title: '',
       location: '',
       src: '',
-      description: ''
+      description: '',
+      date: ''
     }
   },
   computed: {
@@ -92,7 +103,8 @@ export default {
         title: this.location,
         location: this.location,
         src: this.src,
-        description: this.description
+        description: this.description,
+        date: this.date
       }
       this.$store.dispatch('createMeetup', meetData)
       this.$router.push('/meetups')
