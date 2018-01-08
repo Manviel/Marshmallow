@@ -36,12 +36,9 @@
 
 <script>
   export default {
-    data () {
-      return {
-        meetups: [
-          { src: 'http://www.smileacadimos.gr/Images/Products/Netherlands-Amsterdam_413054785-20170921-114451.jpg', id: '1', title: 'Amsterdam' },
-          { src: 'http://ukamenterprises.com/wp-content/uploads/2015/07/Ni7326971.jpg', id: '2', title: 'Kyiv' }
-        ]
+    computed: {
+      meetups () {
+        return this.$store.getters.featureMeetups
       }
     },
     methods: {
