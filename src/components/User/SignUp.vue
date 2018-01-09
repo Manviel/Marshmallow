@@ -44,8 +44,7 @@
                 <v-layout row>
                   <v-flex xs12>
                     <v-btn type="submit"
-                      :disabled="loading"
-                      :loading="loading">
+                      :disabled="loading" :loading="loading">
                       Sign Up
                       <span slot="loader">
                         <v-icon light>cached</v-icon>
