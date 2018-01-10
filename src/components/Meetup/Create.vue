@@ -28,11 +28,10 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="src" label="Image"
-                v-model="src"
-                id="src" required>
-              </v-text-field>
+              <v-btn raised @click="onPickFile">Upload image</v-btn>
+              <input type="file" style="display: none"
+                ref="fileInput" accept="image/*"
+                @change="onFilePicked">
             </v-flex>
           </v-layout>
           <v-layout row>
@@ -83,7 +82,8 @@ export default {
       location: '',
       src: '',
       description: '',
-      date: ''
+      date: '',
+      image: null
     }
   },
   computed: {
@@ -96,18 +96,34 @@ export default {
   },
   methods: {
     onCreate () {
-      if (!this.formIsValid) {
-        return
-      }
+      if (!this.formIsValid) return
+      if (!this.image) return
       const meetData = {
         title: this.title,
         location: this.location,
-        src: this.src,
+        image: this.image,
         description: this.description,
         date: this.date
       }
       this.$store.dispatch('createMeetup', meetData)
       this.$router.push('/meetups')
+    },
+    onPickFile () {
+      this.$refs.fileInput.click()
+    },
+    onFilePicked (e) {
+      const files = e.target.files
+      let filename = files[0].name
+
+      if (filename.lastIndexOf('.') <= 0) {
+        return alert('Please, valid file')
+      }
+      const fileReader = new FileReader()
+      fileReader.addEventListener('load', () => {
+        this.src = fileReader.result
+      })
+      fileReader.readAsDataURL(files[0])
+      this.image = files[0]
     }
   }
 }
