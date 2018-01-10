@@ -46,7 +46,8 @@ export const store = new Vuex.Store({
               description: obj[key].description,
               src: obj[key].src,
               location: obj[key].location,
-              date: obj[key].date
+              date: obj[key].date,
+              creatorId: obj[key].creatorId
             })
           }
           commit('setLoadedEvents', events)
@@ -57,13 +58,14 @@ export const store = new Vuex.Store({
           commit('setLoading', true)
         })
     },
-    createMeetup ({ commit }, payload) {
+    createMeetup ({ commit, getters }, payload) {
       const meetup = {
         title: payload.title,
         location: payload.location,
         src: payload.src,
         description: payload.description,
-        date: payload.date
+        date: payload.date,
+        creatorId: getters.user.id
       }
       firebase.database().ref('events').push(meetup)
         .then(data => {
