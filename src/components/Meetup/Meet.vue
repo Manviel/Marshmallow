@@ -25,6 +25,9 @@
           </v-card-media>
           <v-card-text>
             <div>{{ meet.date | date }} - {{ meet.location }}</div>
+            <div>
+              <app-edit-date :meet="meet" v-if="userIsCreator"></app-edit-date>
+            </div>
             <div>{{ meet.description }}</div>
           </v-card-text>
           <v-card-actions>
