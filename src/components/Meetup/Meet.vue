@@ -1,10 +1,23 @@
 <template>
   <v-container>
-    <v-layout row wrap>
+    <v-layout row-wrap v-if="loading">
+      <v-flex xs12 class="text-xs-center">
+        <v-progress-circular
+          indeterminate color="red"
+          :width="6" :size="70"
+          v-if="loading">
+        </v-progress-circular>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap v-else>
       <v-flex xs12>
         <v-card>
           <v-card-title>
             <h2>{{ meet.title }}</h2>
+            <template v-if="userIsCreator">
+              <v-spacer></v-spacer>
+              <app-edit-dialog :meet="meet"></app-edit-dialog>
+            </template>
           </v-card-title>
           <v-card-media
             :src="meet.src"
@@ -30,6 +43,18 @@ export default {
   computed: {
     meet () {
       return this.$store.getters.loadedMeet(this.id)
+    },
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    },
+    userIsCreator () {
+      if (!this.userIsAuthenticated) {
+        return false
+      }
+      return this.$store.getters.user.id === this.meet.creatorId
+    },
+    loading () {
+      return this.$store.getters.loading
     }
   }
 }
