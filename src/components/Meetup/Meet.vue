@@ -32,7 +32,10 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <app-register :meetId="meet.id"></app-register>
+            <app-register
+              :meetId="meet.id"
+              v-if="userIsAuthenticated && !userIsCreator">
+            </app-register>
           </v-card-actions>
         </v-card>
       </v-flex>

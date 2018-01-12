@@ -227,6 +227,30 @@ export const store = new Vuex.Store({
         fbKeys: {}
       })
     },
+    fetchUserData ({commit, getters}) {
+      commit('setLoading', true)
+      firebase.database().ref('/users/' + getters.user.id + '/registration/').once('value')
+        .then(data => {
+          const facts = data.val()
+          let registerMeetups = []
+          let swapped = {}
+          for (let key in facts) {
+            registerMeetups.push(facts[key])
+            swapped[facts[key]] = key
+          }
+          const updatedUser = {
+            id: getters.user.id,
+            registerMeetups: registerMeetups,
+            fbKeys: swapped
+          }
+          commit('setLoading', false)
+          commit('setUser', updatedUser)
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+    },
     logOut ({commit}) {
       firebase.auth().signOut()
       commit('setUser', null)
