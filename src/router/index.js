@@ -5,7 +5,6 @@ import Home from '@/components/Home'
 import Meetups from '@/components/Meetup/Meetups'
 import Create from '@/components/Meetup/Create'
 import Meet from '@/components/Meetup/Meet'
-import Profile from '@/components/User/Profile'
 import SignIn from '@/components/User/SignIn'
 import SignUp from '@/components/User/SignUp'
 import Guard from './guard'
@@ -35,11 +34,6 @@ export default new Router({
       name: 'Meet',
       props: true,
       component: Meet
-    },
-    {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile
     },
     {
       path: '/signin',
