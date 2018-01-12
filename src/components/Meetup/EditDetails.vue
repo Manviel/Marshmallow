@@ -1,5 +1,5 @@
 <template>
-  <v-dialog width="350px" persistent v-model="editDialog">
+  <v-dialog persistent v-model="editDialog">
     <v-btn fab accent slot="activator">
       <v-icon>edit</v-icon>
     </v-btn>

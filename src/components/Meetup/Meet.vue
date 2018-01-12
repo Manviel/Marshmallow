@@ -32,7 +32,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn class="red" dark>Register</v-btn>
+            <app-register :meetId="meet.id"></app-register>
           </v-card-actions>
         </v-card>
       </v-flex>
